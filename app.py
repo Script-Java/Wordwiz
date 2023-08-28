@@ -76,7 +76,8 @@ def about():
 
 @app.route('/blogs')
 def blogs():
-    return render_template('blogs.html')
+    blogs = Blog.query.all()
+    return render_template('blogs.html', blogs=blogs)
 
 @app.route('/signup', methods=['POST','GET'])
 def signup():
@@ -120,8 +121,30 @@ def aindex():
 @app.route('/ablogs')
 @login_required
 def ablogs():
-    return render_template('ablogs.html')
+    blogs = Blog.query.all()
+    myblogs = Blog.query.filter_by(user_id=current_user.id).all()
+    return render_template('ablogs.html', blogs=blogs, myblogs=myblogs)
 
+@app.route('/create', methods=['POST','GET'])
+@login_required
+def create():
+    form = BlogForm()
+    return render_template('create.html', form=form)
+
+@app.route('/add', methods=['POST','GET'])
+@login_required
+def add():
+    try:
+        blog_title = request.form.get('form_title')
+        blog_content = request.form.get('form_content')
+        new_blog = Blog(title=blog_title,content=blog_content)
+        current_user.blogs.append(new_blog)
+        db.session.add(new_blog)
+        db.session.commit()
+        return redirect(url_for('ablogs'))
+    
+    except Exception as e:
+        return render_template('error.html',error=e)
 
 @app.route('/logout')
 @login_required

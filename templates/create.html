@@ -54,57 +54,19 @@
 
   <section>
     <div class="container">
-
-      <div class="container">
-        <form class="">   
-            <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
-            <div class="relative">
-                <input type="search" id="default-search" class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search Blogs..." required>
-                <button type="submit" class="text-white absolute right-2.5 bottom-5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
-            </div>
-        </form>
-      </div>
-
-      <section>
-        <p class="text-gray-200 text-center text-3xl p-8">My Blogs</p>
-        <div class="container flex justify-around align-center flex-wrap">
-            {% if myblogs %}
-
-              {% for items in myblogs %}
-
-                  <a href="#" class="block max-w-sm p-6 m-4 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                      <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">{{items.title}}</h5>
-                      <p class="font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                  </a>
-
-              {% endfor %}
-
-            {% else %}
-              <p class="text-gray-200">You do not have any blogs currently go to <a href="/create" class="underline text-gray-200">/create</a></p>
-            {% endif %}
+        <p class="text-white text-3xl pb-4">Create Blog</p>
+      <form action="/add" method="post">
+        <div class="mb-6">
+            <label for="default-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Blog Title</label>
+            <input type="text" name="form_title" required id="default-input" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
         </div>
-        <div class="m-auto text-center p-4">
-          <a href="" class="underline p-4 text-gray-200 text-xl">View All</a>
-        </div>
-      </section>
 
-      <section>
-        <p class="text-gray-200 text-center text-3xl p-8">All Blogs</p>
-        <div class="container flex justify-around align-center flex-wrap">
-            {% for items in blogs %}
-                
-                <a href="#" class="block max-w-sm p-6 m-4 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">{{items.title}}</h5>
-                    <p class="font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                </a>
-                
-            {% endfor %}
+        <div class="mb-6">
+            <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Blog Message</label>
+            <textarea id="message" required name="form_content" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write your thoughts here..."></textarea>
         </div>
-        <div class="m-auto text-center p-4">
-          <a href="" class="underline p-4 text-gray-200 text-xl">View All</a>
-        </div>
-      </section>
-        
+        <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-80">Create</button>
+      </form>
         
 
     </div>
