@@ -64,7 +64,7 @@ def unauthorized():
     return redirect(url_for('login'))
 
     
-news = get_news('7d33db3af6664d2cbb3c69ffb0a29285')
+news = get_news('API_KEY_REMOVED_FOR_GIT_HUB')
 
 @app.route('/')
 def index():
